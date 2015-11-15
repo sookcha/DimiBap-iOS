@@ -7,12 +7,33 @@
 //
 
 import UIKit
+import Kanna
 
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        let date = NSDate()
+        let formatter = NSDateFormatter()
+        formatter.timeStyle = .ShortStyle
+        formatter.stringFromDate(date)
+        
+        if let doc = Kanna.HTML(html: html, encoding: NSUTF8StringEncoding) {
+            println(doc.title)
+            
+            // Search for nodes by CSS
+            for link in doc.css("a, link") {
+                println(link.text)
+                println(link["href"])
+            }
+            
+            // Search for nodes by XPath
+            for link in doc.xpath("//a | //link") {
+                println(link.text)
+                println(link["href"])
+            }
+        }
+
     }
 
     override func didReceiveMemoryWarning() {
