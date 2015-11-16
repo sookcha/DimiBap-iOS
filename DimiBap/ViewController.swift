@@ -8,32 +8,36 @@
 
 import UIKit
 import Kanna
+import Alamofire
 
 class ViewController: UIViewController {
+    @IBOutlet var label : UILabel?
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
         let date = NSDate()
         let formatter = NSDateFormatter()
         formatter.timeStyle = .ShortStyle
         formatter.stringFromDate(date)
         
-        if let doc = Kanna.HTML(html: html, encoding: NSUTF8StringEncoding) {
-            println(doc.title)
+        let html = Alamofire.request(.GET, "http://dimigo.in/pages/dimibob_getdata.php?d=20151116").responseString {
+            response in
+                let transform = "Any-Hex/Java"
+                let i = response.result.value! as NSString
+                let convertedString = i.mutableCopy() as! NSMutableString
             
-            // Search for nodes by CSS
-            for link in doc.css("a, link") {
-                println(link.text)
-                println(link["href"])
-            }
+                CFStringTransform(convertedString, nil, transform as NSString, true)
             
-            // Search for nodes by XPath
-            for link in doc.xpath("//a | //link") {
-                println(link.text)
-                println(link["href"])
-            }
-        }
+                print("convertedString: \(convertedString)")
+            
+                self.label!.text = "\(convertedString)"
 
+        }
+        
+        print (html)
     }
 
     override func didReceiveMemoryWarning() {

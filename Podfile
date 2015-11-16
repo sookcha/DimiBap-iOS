@@ -5,5 +5,6 @@ use_frameworks!
 
 target 'DimiBap' do
 	pod 'Kanna', '~> 1.0.0'
+	pod 'Alamofire', '~> 3.0'
 end
 

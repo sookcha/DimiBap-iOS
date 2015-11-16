@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Alamofire.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Kanna.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -17,12 +22,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>98F734B4AB175A23010CE4A565B528EA</key>
+		<key>432ECC54282C84882B482CCB4CF227FC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>9E26363B73022A679DE4E50CFF38138A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B48294D41B572DF5A848FF6A4F3E432B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
